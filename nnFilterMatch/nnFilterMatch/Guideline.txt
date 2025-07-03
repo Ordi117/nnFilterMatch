@@ -1,0 +1,50 @@
+Although our pipeline automates much of the preprocessing and training, you still need to perform a few setup steps to prepare your dataset.
+-------------------------------------------------------------------------------------------------------------
+A. Setup
+
+1. Split Your Dataset
+	Divide your dataset into training, validation, and testing sets as needed. Assign a unique dataset 	ID to each labeled and unlabeled dataset (e.g., Dataset001, Dataset002).
+
+2. Prepare Folder Structure
+	Follow the nnU-Net folder structure as described in the official nnU-Net repository. Create the 	necessary directories for images and labels (imagesTr, labelsTr, imagesTs, etc.).
+
+3. Dataset Configuration
+	Once the folder structure is in place, configure your dataset according to nnU-Net’s standard 	guidelines. This includes creating the dataset.json file with appropriate metadata.
+
+-------------------------------------------------------------------------------------------------------------
+
+B. Preprocessing
+
+1. Organize Your Data
+	You now have two datasets:
+		Dataset A: Contains labeled data
+		Dataset B: Contains unlabeled data
+
+2. Preprocess Labeled Data
+	Run the following command on your labeled dataset to generate preprocessing plans and 	preprocessed files: nnUNetv2_plan_and_preprocess -d <dataset_id_A> --verify_dataset_integrity
+
+3. Handle Unlabeled Data
+	nnU-Net expects ground truth labels for all input images. Since your unlabeled dataset does not 	have them, create a set of empty masks (e.g., arrays filled with zeros) to serve as placeholder 	ground truth.
+
+4. Copy Plan Files
+	Copy the plan files generated from the labeled dataset (Dataset A) into the preprocessing 	directory of your unlabeled dataset (Dataset B).
+
+5. Preprocess Unlabeled Data
+	With the blank masks and copied plan files in place, run preprocessing on the unlabeled 	dataset: nnUNetv2_preprocess -d <dataset_id_B>
+
+-------------------------------------------------------------------------------------------------------------
+
+C. Training and Inference
+
+1. Training and Validation Only
+	If your goal is just to train the model and evaluate it on the validation set, you can use the 	provided nnFilterMatch notebook directly. It includes all necessary steps for training and 	internal validation within the same pipeline.
+
+2. Running Test Inference
+	If you want to perform inference on a separate test set using the nnU-Net framework, you'll 	need to integrate your custom trainer (nnFilterMatch) into the original nnU-Net codebase. 	Specifically:
+
+	Place your trainer Python file in:
+	nnUNet/nnunetv2/training/nnUNetTrainer/
+
+You may need to rename the file to match nnU-Net's naming convention (e.g., nnUNetTrainer_nnFilterMatch.py) and ensure the class name inside matches accordingly
+
+-------------------------------------------------------------------------------------------------------------
