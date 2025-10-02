@@ -28,7 +28,7 @@ These include dataset splits and configuration details.
 
 ### 🧪 5% Labeled Data, lr: 5e-3, weight_deacy: 3e-3
 
-| Method | Dice (%) | IoU (%) | 95HD (mm) | ASD (mm) |
+| Method | Dice (%) | IoU (%) | 95HD (voxel) | ASD (voxel) |
 |--------|----------|---------|-----------|----------|
 | SL     | 82.96    | 73.01   | 9.52      | 2.69     |
 | SSL    | 89.51    | 81.59   | 2.43      | 0.71     |
@@ -38,7 +38,7 @@ These include dataset splits and configuration details.
 
 ### 🧪 10% Labeled Data, lr: 1e-2, weight_deacy: 3e-5
 
-| Method | Dice (%) | IoU (%) | 95HD (mm) | ASD (mm) |
+| Method | Dice (%) | IoU (%) | 95HD (voxel) | ASD (voxel) |
 |--------|----------|---------|-----------|----------|
 | SL     | 86.31    | 77.55   | 4.42      | 1.14     |
 | SSL    | 89.58    | 81.65   | 2.41      | 0.69     |
