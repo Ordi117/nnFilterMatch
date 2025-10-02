@@ -21,7 +21,29 @@ These include dataset splits and configuration details.
 - **ACDC** – Automated Cardiac Diagnosis Challenge  
 - **LA** – Left Atrium segmentation dataset  
 - **SegTHOR** – Thoracic organ segmentation
-- **Prostate** – Prostate segmentation 
+- **Prostate** – Prostate segmentation
+
+
+## 📊 Results on ACDC Dataset-Ablation
+
+### 🧪 5% Labeled Data, lr: 5e-3, weight_deacy: 3e-3
+
+| Method | Dice (%) | IoU (%) | 95HD (mm) | ASD (mm) |
+|--------|----------|---------|-----------|----------|
+| SL     | 82.96    | 73.01   | 9.52      | 2.69     |
+| SSL    | 89.51    | 81.59   | 2.43      | 0.71     |
+| **SSL_AL (nnFilterMatch)** | **89.56** | **81.63** | **2.39** | **0.63** |
+
+---
+
+### 🧪 10% Labeled Data, lr: 1e-2, weight_deacy: 3e-5
+
+| Method | Dice (%) | IoU (%) | 95HD (mm) | ASD (mm) |
+|--------|----------|---------|-----------|----------|
+| SL     | 86.31    | 77.55   | 4.42      | 1.14     |
+| SSL    | 89.58    | 81.65   | 2.41      | 0.69     |
+| **SSL_AL (nnFilterMatch)** | **90.06** | **82.41** | **1.46** | **0.44** |
+
 
 
 ## 📚 Citation
